@@ -6,46 +6,94 @@
     <title>Registrasi User</title>
 
     <style>
+        :root {
+            --telkom-red: #C4161C;
+            --telkom-dark: #9E1116;
+            --border: #e0e0e0;
+            --bg-soft: #f4f6f8;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            padding: 20px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #f8f8f8, #f1f1f1);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
         }
+
         .register-box {
-            background: white;
-            max-width: 400px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: #ffffff;
+            width: 100%;
+            max-width: 420px;
+            padding: 30px 28px;
+            border-radius: 14px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
-        h2 {
+
+        .register-box h2 {
             text-align: center;
+            color: var(--telkom-red);
+            margin-bottom: 20px;
         }
+
         label {
+            font-weight: 600;
             display: block;
-            margin-top: 10px;
+            margin-top: 12px;
+            color: #333;
         }
+
         input {
             width: 100%;
-            padding: 8px;
-            margin-top: 5px;
+            padding: 10px 12px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-size: 14px;
+            transition: 0.2s;
         }
+
+        input:focus {
+            outline: none;
+            border-color: var(--telkom-red);
+            box-shadow: 0 0 0 2px rgba(196,22,28,0.15);
+        }
+
         button {
-            margin-top: 15px;
+            margin-top: 20px;
             width: 100%;
-            padding: 10px;
-            background: #4caf50;
+            padding: 12px;
+            background: var(--telkom-red);
             border: none;
+            border-radius: 10px;
             color: white;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
+            transition: 0.3s;
         }
+
         button:hover {
-            background: #388e3c;
+            background: var(--telkom-dark);
+            transform: translateY(-1px);
         }
+
         .login-link {
             text-align: center;
-            margin-top: 15px;
+            margin-top: 18px;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: var(--telkom-red);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
