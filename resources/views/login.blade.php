@@ -100,6 +100,23 @@
             transform: translateY(-1px);
         }
 
+        .register-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .register-link a {
+            color: #b91c1c;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
         .alert-error {
             background: #fee2e2;
             color: #991b1b;
@@ -131,7 +148,7 @@
     <div class="app-title">KostFinder</div>
     <div class="login-title">Login</div>
 
-    <form method="POST" action="{{ route('login') }}" id="loginForm">
+    <form method="POST" action="{{ route('login') }}">
         @csrf
 
         @if(session('error'))
@@ -144,11 +161,9 @@
             <label>Email</label>
             <input type="email"
                    name="email"
-                   id="email"
                    value="{{ old('email') }}"
                    placeholder="Masukkan email"
                    required>
-            <div class="error" id="emailError"></div>
         </div>
 
         <div class="form-group">
@@ -161,12 +176,16 @@
                        required>
                 <span class="toggle-password" onclick="togglePassword()">Show</span>
             </div>
-            <div class="error" id="passwordError"></div>
         </div>
 
         <button type="submit" class="btn-login">
             Login
         </button>
+
+        <div class="register-link">
+            Belum punya akun?
+            <a href="{{ route('register') }}">Daftar sekarang</a>
+        </div>
     </form>
 
     <div class="footer-text">
