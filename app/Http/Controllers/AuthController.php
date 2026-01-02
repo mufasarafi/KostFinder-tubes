@@ -65,7 +65,7 @@ public function register(Request $request)
 
     Auth::login($user);
 
-    // 🔽 REDIRECT SESUAI ROLE
+    
     if ($user->role === 'admin') {
         return redirect('/admin/dashboard');
     }
