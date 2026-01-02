@@ -18,26 +18,20 @@ return view('login');
 
 public function login(Request $request)
 {
-$credentials = $request->validate([
-'email' => 'required|email',
-'password' => 'required'
-]);
+    $credentials = $request->only('email', 'password');
 
+    if (Auth::attempt($credentials)) {
 
-if (Auth::attempt($credentials)) {
-$request->session()->regenerate();
+        if (auth()->user()->role === 'admin') {
+            return redirect('/admin/dashboard');
+        }
 
+        return redirect('/user/dashboard');
+    }
 
-if (auth()->user()->role === 'admin') {
-return redirect('/admin/dashboard');
-}
-return redirect('/user/dashboard');
-}
-
-
-return back()->withErrors([
-'email' => 'Login gagal'
-]);
+    return back()->withErrors([
+        'email' => 'Login gagal'
+    ]);
 }
 
 
@@ -58,18 +52,26 @@ public function register(Request $request)
 {
     $request->validate([
         'name' => 'required',
-        'email' => 'required|email|unique:users,email',
-        'password' => 'required|confirmed|min:6',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|min:6',
     ]);
 
-    User::create([
+    $user = User::create([
         'name' => $request->name,
         'email' => $request->email,
-        'password' =>bcrypt($request->password),
-        'role' => 'user' // default user
+        'password' => bcrypt($request->password),
+        'role' => 'user', // default user
     ]);
 
-    return redirect('/login')->with('success', 'Registrasi berhasil, silakan login');
+    Auth::login($user);
+
+    // 🔽 REDIRECT SESUAI ROLE
+    if ($user->role === 'admin') {
+        return redirect('/admin/dashboard');
+    }
+
+    return redirect('/user/dashboard');
 }
+
 
 }

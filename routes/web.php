@@ -14,7 +14,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::get('/register', [AuthController::class, 'showRegister']);
-Route::post('/register', [AuthController::class, 'register']);
+Route::get('/register', [RegisterController::class, 'show'])->name('register');
+
 
 /* ================= ADMIN ================= */
 Route::middleware(['auth', 'role:admin'])->group(function () {
