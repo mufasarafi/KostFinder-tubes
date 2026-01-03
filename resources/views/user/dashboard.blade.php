@@ -6,60 +6,164 @@
     <title>KostFinder - Cari Kost</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            margin: 0;
-            padding: 0;
+        :root {
+            --telkom-red: #C4161C;
+            --telkom-dark: #9E1116;
+            --bg-soft: #f4f6f8;
+            --border: #e0e0e0;
         }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--bg-soft);
+            margin: 0;
+        }
+
         header {
-            background: #2196f3;
-            color: white;
-            padding: 20px;
+            background: linear-gradient(135deg, var(--telkom-red), var(--telkom-dark));
+            color: #fff;
+            padding: 25px 20px;
             text-align: center;
         }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin-top: 8px;
+            opacity: 0.9;
+        }
+
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 30px auto;
-            padding: 20px;
+            padding: 0 20px;
         }
-        .filter, .card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
+
+        .filter {
+            background: #fff;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        .filter form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
         .filter input {
-            padding: 8px;
-            margin-right: 10px;
-            width: 150px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            width: 160px;
         }
+
         .filter button {
-            padding: 8px 15px;
-            background: #2196f3;
+            padding: 10px 18px;
+            background: var(--telkom-red);
             border: none;
             color: white;
+            font-weight: 600;
+            border-radius: 10px;
             cursor: pointer;
+            transition: 0.3s;
         }
-        .kost {
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
+
+        .filter button:hover {
+            background: var(--telkom-dark);
         }
-        .kost:last-child {
-            border-bottom: none;
+
+        .filter small {
+            display: block;
+            margin-top: 8px;
+            color: #666;
         }
-        .logout {
-            text-align: right;
-            margin-bottom: 10px;
-        }
-        .logout button {
-            background: #f44336;
+
+        .logout form button {
+            background: #555;
             color: white;
             border: none;
-            padding: 8px 15px;
+            padding: 10px 16px;
+            border-radius: 10px;
             cursor: pointer;
-            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .logout form button:hover {
+            background: #333;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--telkom-red);
+        }
+
+        .card p {
+            margin: 6px 0;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .status.kosong {
+            background: #28a745;
+        }
+
+        .status.full {
+            background: #dc3545;
+        }
+
+        .detail-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--telkom-red);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .detail-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .filter form {
+                flex-direction: column;
+            }
+            .filter input {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -72,32 +176,39 @@
 
 <div class="container">
 
-    <div class="logout">
-        <form method="POST" action="/logout">
-            @csrf
-            <button type="submit">Logout</button>
-        </form>
+    <div class="top-bar">
+        <div></div>
+        <div class="logout">
+            <form method="POST" action="/logout">
+                @csrf
+                <button type="submit">Logout</button>
+            </form>
+        </div>
     </div>
 
     {{-- FILTER --}}
     <div class="filter">
-    <form method="GET" action="/user/dashboard">
-        <input type="number" name="harga_min" placeholder="Harga Min">
-        <input type="number" name="harga_max" placeholder="Harga Max">
-        <button type="submit">Cari Kost</button>
-    </form>
-    <small>* Jarak maksimal 1 KM dari kampus</small>
-</div>
+        <form method="GET" action="/user/dashboard">
+            <input type="number" name="harga_min" placeholder="Harga Min">
+            <input type="number" name="harga_max" placeholder="Harga Max">
+            <button type="submit">Cari Kost</button>
+        </form>
+        <small>* Jarak maksimal 1 KM dari kampus</small>
+    </div>
 
     {{-- LIST KOST --}}
     @foreach($kosts as $kost)
-    <div class="card kost">
-        <h3>{{ $kost->nama_kost }}</h3>
-        <p>Harga: Rp {{ number_format($kost->harga) }}</p>
-        <p>Jarak: {{ $kost->jarak }} KM</p>
-        <p>Status: {{ $kost->status }}</p>
-       <a href="/kost/{{ $kost->id }}">Lihat Detail</a>
-    </div>
+        <div class="card">
+            <h3>{{ $kost->nama_kost }}</h3>
+            <p>Harga: Rp {{ number_format($kost->harga) }}</p>
+            <p>Jarak: {{ $kost->jarak }} KM</p>
+            <p>Status:
+                <span class="status {{ $kost->status }}">
+                    {{ ucfirst($kost->status) }}
+                </span>
+            </p>
+            <a href="/kost/{{ $kost->id }}" class="detail-link">Lihat Detail →</a>
+        </div>
     @endforeach
 
 </div>
