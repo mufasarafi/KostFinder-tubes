@@ -8,12 +8,19 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
-            background: linear-gradient(135deg, #b91c1c, #ef4444);
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background:
+            linear-gradient(rgba(185,28,28,0.75), rgba(239,68,68,0.75)),
+            url('https://images.unsplash.com/photo-1568605114967-8130f3a36994');
+
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         }
 
         .login-card {

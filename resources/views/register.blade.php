@@ -15,12 +15,19 @@
 
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #f8f8f8, #f1f1f1);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
+             background:
+            linear-gradient(rgba(196,22,28,0.75), rgba(158,17,22,0.75)),
+            url('https://images.unsplash.com/photo-1568605114967-8130f3a36994');
+
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
         }
 
         .register-box {

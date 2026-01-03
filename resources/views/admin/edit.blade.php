@@ -1,4 +1,18 @@
 <style>
+    body {
+        font-family: Arial, sans-serif;
+
+        background:
+            linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+            url('https://images.unsplash.com/photo-1766230091798-4258a18a8a8b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fFJ1bWFoJTIwa29zfGVufDB8fDB8fHww');
+
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+
+        margin: 0;
+    }
+    
     :root {
         --telkom-red: #C4161C;
         --telkom-dark: #9E1116;

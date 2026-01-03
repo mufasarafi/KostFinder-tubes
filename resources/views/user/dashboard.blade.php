@@ -9,14 +9,20 @@
         :root {
             --telkom-red: #C4161C;
             --telkom-dark: #9E1116;
-            --bg-soft: #f4f6f8;
             --border: #e0e0e0;
         }
 
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: var(--bg-soft);
             margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+
+            /* BACKGROUND GAMBAR RUMAH KOS */
+            background: 
+                linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         header {
@@ -39,29 +45,39 @@
         .container {
             max-width: 1100px;
             margin: 30px auto;
-            padding: 0 20px;
+            padding: 0 20px 40px;
         }
 
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+        .logout {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .logout button {
+            background: #444;
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .logout button:hover {
+            background: #222;
         }
 
         .filter {
-            background: #fff;
+            background: rgba(255,255,255,0.95);
             padding: 20px;
-            border-radius: 14px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
             margin-bottom: 25px;
         }
 
         .filter form {
             display: flex;
-            flex-wrap: wrap;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .filter input {
@@ -79,7 +95,6 @@
             font-weight: 600;
             border-radius: 10px;
             cursor: pointer;
-            transition: 0.3s;
         }
 
         .filter button:hover {
@@ -89,34 +104,20 @@
         .filter small {
             display: block;
             margin-top: 8px;
-            color: #666;
-        }
-
-        .logout form button {
-            background: #555;
-            color: white;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .logout form button:hover {
-            background: #333;
+            color: #555;
         }
 
         .card {
-            background: #fff;
-            border-radius: 16px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 18px;
             padding: 20px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
             margin-bottom: 20px;
             transition: 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
         }
 
         .card h3 {
@@ -176,14 +177,11 @@
 
 <div class="container">
 
-    <div class="top-bar">
-        <div></div>
-        <div class="logout">
-            <form method="POST" action="/logout">
-                @csrf
-                <button type="submit">Logout</button>
-            </form>
-        </div>
+    <div class="logout">
+        <form method="POST" action="/logout">
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
     </div>
 
     {{-- FILTER --}}
