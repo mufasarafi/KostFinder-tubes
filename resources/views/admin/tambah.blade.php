@@ -131,5 +131,23 @@
         </div>
 
         <button type="submit" class="btn-submit">Simpan Data Kost</button>
+
+        <a href="/admin/dashboard" class="btn-cancel">❌ Batal</a>
     </form>
+
+    <script>
+let isDirty = false;
+
+document.querySelectorAll('input, textarea, select').forEach(el => {
+    el.addEventListener('change', () => isDirty = true);
+});
+
+window.addEventListener('beforeunload', function (e) {
+    if (isDirty) {
+        e.preventDefault();
+        e.returnValue = '';
+    }
+});
+    </script>
+
 </div>
