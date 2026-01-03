@@ -11,7 +11,7 @@
 @foreach($kosts as $kost)
 <div>
     <b>{{ $kost->nama_kost }}</b><br>
-    Harga: Rp {{ number_format($kost->harga) }}<br>
+    Harga: Rp {{ number_format($kost->harga) }} per Bulan <br>
     Jarak: {{ $kost->jarak }} KM<br>
     <a href="/user/kost/{{ $kost->id }}">Detail</a>
 </div>

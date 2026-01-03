@@ -91,7 +91,7 @@
 
         <div class="form-row">
             <div class="form-group">
-                <label>Harga (Rp)</label>
+                <label>Harga (Rp) per Bulan</label>
                 <input type="number" name="harga" placeholder="Harga" required>
             </div>
 

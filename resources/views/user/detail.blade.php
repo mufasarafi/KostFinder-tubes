@@ -120,7 +120,7 @@
     <div class="info-grid">
         <div class="info-item">
             <strong>Harga</strong><br>
-            Rp {{ number_format($kost->harga) }}
+            Rp {{ number_format($kost->harga) }} per Bulan
         </div>
 
         <div class="info-item">

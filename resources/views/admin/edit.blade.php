@@ -92,7 +92,7 @@
 
         <div class="form-row">
             <div class="form-group">
-                <label>Harga (Rp)</label>
+                <label>Harga (Rp) per Bulan</label>
                 <input name="harga" type="number" value="{{ $kost->harga }}">
             </div>
 
