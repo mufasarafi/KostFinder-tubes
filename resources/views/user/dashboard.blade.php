@@ -81,13 +81,13 @@
 
     {{-- FILTER --}}
     <div class="filter">
-        <form method="GET" action="/user/kost">
-            <input type="number" name="harga_min" placeholder="Harga Min">
-            <input type="number" name="harga_max" placeholder="Harga Max">
-            <button type="submit">Cari Kost</button>
-        </form>
-        <small>* Jarak maksimal 1 KM dari kampus</small>
-    </div>
+    <form method="GET" action="/user/dashboard">
+        <input type="number" name="harga_min" placeholder="Harga Min">
+        <input type="number" name="harga_max" placeholder="Harga Max">
+        <button type="submit">Cari Kost</button>
+    </form>
+    <small>* Jarak maksimal 1 KM dari kampus</small>
+</div>
 
     {{-- LIST KOST --}}
     @foreach($kosts as $kost)
