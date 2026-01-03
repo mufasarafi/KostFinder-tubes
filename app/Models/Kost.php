@@ -16,6 +16,6 @@ class Kost extends Model
         'kondisi',
         'fasilitas',
         'status',
-        'lokasi_map'
+        'alamat'
     ];
 }

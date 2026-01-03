@@ -126,8 +126,8 @@
         </div>
 
         <div class="form-group">
-            <label>Lokasi Google Maps (Embed)</label>
-            <textarea name="lokasi_map" placeholder="Embed Google Maps"></textarea>
+            <label>Alamat Kost</label>
+            <textarea name="alamat" placeholder="Alamat Kost"></textarea>
         </div>
 
         <button type="submit" class="btn-submit">Simpan Data Kost</button>

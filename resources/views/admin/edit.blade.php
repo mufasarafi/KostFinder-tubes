@@ -126,8 +126,8 @@
         </div>
 
         <div class="form-group">
-            <label>Lokasi Google Maps (Embed)</label>
-            <textarea name="lokasi_map">{{ $kost->lokasi_map }}</textarea>
+            <label>Alamat Kost</label>
+            <textarea name="alamat">{{ $kost->alamat }}</textarea>
         </div>
 
         <button class="btn-submit">Update Data Kost</button>

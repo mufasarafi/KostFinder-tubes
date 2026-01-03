@@ -144,6 +144,23 @@
         {{ $kost->fasilitas }}
     </div>
 
+   <h4>Alamat Kost</h4>
+<div class="content-box">
+    {{ $kost->alamat }}
+</div>
+
+<h4>Lokasi Kost</h4>
+<div class="content-box" style="padding:0">
+    <iframe
+        width="100%"
+        height="300"
+        frameborder="0"
+        style="border:0; border-radius:10px"
+        loading="lazy"
+        src="https://www.google.com/maps?q={{ urlencode($kost->alamat) }}&output=embed">
+    </iframe>
+</div>
+
     <a href="/user/dashboard" class="back-btn">⬅ Kembali ke Dashboard</a>
 
 </div>

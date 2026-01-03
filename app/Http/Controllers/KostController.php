@@ -36,6 +36,7 @@ class KostController extends Controller
             'kondisi'    => $request->kondisi,
             'fasilitas'  => $request->fasilitas,
             'status'     => $request->status,
+            'alamat' => $request->alamat
         ]);
 
         return redirect('/admin/dashboard')
@@ -67,6 +68,7 @@ class KostController extends Controller
             'kondisi'    => $request->kondisi,
             'fasilitas'  => $request->fasilitas,
             'status'     => $request->status,
+            'alamat' => $request->alamat
         ]);
 
         return redirect('/admin/dashboard')
